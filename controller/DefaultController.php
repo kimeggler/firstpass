@@ -33,8 +33,11 @@ class DefaultController
      */
     public function index()
     {
-        // Für den Moment wird dem Benutzer ein ganz einfaches "Hallo Welt" ohne
-        // irgendein HTML Markup ausgegeben.
-        echo 'Hallo Welt';
+        $this->login();
+    }
+
+    private function login() {
+        $view = new View('login');
+        $view->display();
     }
 }

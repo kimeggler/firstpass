@@ -7,6 +7,26 @@
     --light-blue: #5692EB;
     --dark-blue: #1A2778;
 }
+* {
+    font-family: Raleway;
+    font-weight: 400;
+    color: var(--white);
+}
 h1 {
-    color: var(--dark-blue);
+    font-size: 32px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+.light {
+    font-weight: 200;
+}
+.bold {
+    font-weight: 700;
 }
