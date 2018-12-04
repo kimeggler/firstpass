@@ -6,7 +6,7 @@ class View
     private $properties = array();
     public function __construct($viewfile)
     {
-        $this->viewfile = "./../view/$viewfile.php";
+        $this->viewfile = "./../views/$viewfile.php";
     }
     public function __set($key, $value)
     {
@@ -23,6 +23,9 @@ class View
     public function display()
     {
         extract($this->properties);
+        require './../views/top.php';
+        require './../views/header.php';
         require $this->viewfile;
+        require './../views/bottom.php';
     }
 }
