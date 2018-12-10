@@ -5,6 +5,12 @@
  * Date: 04.12.2018
  * Time: 11:48
  */
+include "./../lib/DBConnection.php";
+
+$DBConnection = new DBConnection();
+$DBConnection->connect();
+
 ?>
 
 <h1>hello there</h1>
+
