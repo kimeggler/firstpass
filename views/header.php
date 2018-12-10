@@ -1,3 +1,3 @@
 <header>
-    <h1>FirstPass</h1>
+    <h1 id="title">FirstPass</h1>
 </header>

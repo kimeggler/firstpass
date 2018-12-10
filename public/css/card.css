@@ -13,7 +13,7 @@
     flex-direction: column;
 }
 .card-title {
-    color: var(--white);
+    color: var(--black);
 }
 .card-username {
     color: var(--blue-gray);
