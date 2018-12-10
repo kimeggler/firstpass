@@ -3,42 +3,38 @@ require_once '../repository/UserRepository.php';
 /**
  * Siehe Dokumentation im DefaultController.
  */
-class UserController
+class LoginController
 {
     public function index()
     {
         $userRepository = new UserRepository();
-        $view = new View('user_index');
+        $view = new View('login');
         $view->title = 'Benutzer';
         $view->heading = 'Benutzer';
         $view->users = $userRepository->readAll();
         $view->display();
     }
-    public function create()
+    public function signUp()
     {
         $view = new View('user_create');
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
         $view->display();
     }
-    public function doCreate()
+    public function signIn()
     {
-        if ($_POST['send']) {
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
-            $email = $_POST['email'];
+        if ($_POST['login']) {
+            $username = $_POST['username'];
             $password = $_POST['password'];
             $userRepository = new UserRepository();
-            $userRepository->create($firstName, $lastName, $email, $password);
+            $userRepository->login($username, $password);
         }
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
     }
-    public function delete()
+    public function deleteAccount()
     {
         $userRepository = new UserRepository();
         $userRepository->deleteById($_GET['id']);
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
+        // Anfrage an die URI /login weiterleiten (HTTP 302)
+        header('Location: /home');
     }
 }

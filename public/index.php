@@ -9,6 +9,10 @@
  * auf eine bestehende Datei zeigen hierhin umgeleitet.
  */
 
+
+session_start();
+session_regenerate_id();
+
 require_once '../lib/Dispatcher.php';
 require_once '../lib/View.php';
 
