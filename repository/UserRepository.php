@@ -13,23 +13,30 @@ class UserRepository extends Repository
      */
     protected $tableName = 'users';
 
-    public function create($username, $password)
+    public function create($username, $password, $passwordrepeat)
     {
-        $password = sha1($password);
-        $query = "INSERT INTO $this->tableName (username, userpassword,) VALUES ($username, $password)";
+        if($password != $passwordrepeat) {
+            header('Location: /register');
+        }
+
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $query = "INSERT INTO $this->tableName (username, userpassword) VALUES (?, ?)";
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('ss', $username, $password);
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-        return $statement->insert_id;
+        $id = $statement->insert_id;
+        $_SESSION['username'] = $username;
+        $_SESSION['loggedIn'] = true;
+        $_SESSION['uid'] = $id;
+        header('Location: /home');
     }
     public function login($username, $password)
     {
-        $password = sha1($password);
-        $query = "SELECT id, username FROM $this->tableName WHERE username = ? AND userpassword = ?";
+        $query = "SELECT id, username, userpassword FROM $this->tableName WHERE username = ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ss', $username, $password);
+        $statement->bind_param('s', $username);
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
@@ -38,12 +45,18 @@ class UserRepository extends Repository
 
         if($result->num_rows == 1) {
             $row = $result->fetch_object();
-            $_SESSION['username'] = $username;
-            $_SESSION['loggedIn'] = true;
-            $_SESSION['uid'] = $row->id;
-            header('Location: /home');
-            if(isset($_SESSION['loginFalse'])) {
-                unset($_SESSION['loginFalse']);
+            if(password_verify($password, $row->userpassword)) {
+                $_SESSION['username'] = $username;
+                $_SESSION['loggedIn'] = true;
+                $_SESSION['uid'] = $row->id;
+                header('Location: /home');
+                if(isset($_SESSION['loginFalse'])) {
+                    unset($_SESSION['loginFalse']);
+                }
+            }
+            else {
+                header('Location: /login');
+                $_SESSION['loggedIn'] = false;
             }
         } else {
             header('Location: /login');

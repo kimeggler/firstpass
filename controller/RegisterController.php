@@ -3,31 +3,25 @@ require_once '../repository/UserRepository.php';
 /**
  * Siehe Dokumentation im DefaultController.
  */
-class LoginController
+class RegisterController
 {
     public function index()
     {
         $userRepository = new UserRepository();
-        $view = new View('login');
+        $view = new View('register');
         $view->title = 'Benutzer';
         $view->heading = 'Benutzer';
         $view->users = $userRepository->readAll();
         $view->display();
     }
-    public function signIn()
+    public function register()
     {
-        if ($_POST['login']) {
+        if ($_POST['register']) {
             $username = $_POST['username'];
             $password = $_POST['password'];
+            $passwordrepeat = $_POST['password-repeat'];
             $userRepository = new UserRepository();
-            $userRepository->login($username, $password);
+            $userRepository->create($username, $password, $passwordrepeat);
         }
-    }
-    public function deleteAccount()
-    {
-        $userRepository = new UserRepository();
-        $userRepository->deleteById($_GET['id']);
-        // Anfrage an die URI /login weiterleiten (HTTP 302)
-        header('Location: /home');
     }
 }
