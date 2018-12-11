@@ -1,5 +1,6 @@
 :root {
     --white: #FFFFFF;
+    --beige: #f7f6eb;
     --black: #000000;
     --dark-gray: #1C1C1C;
     --light-gray: #333333;
@@ -10,7 +11,7 @@
 * {
     font-family: Raleway;
     font-weight: 400;
-    color: var(--black);
+    color: var(--white);
     margin: 0;
     padding: 0;
 }
@@ -27,10 +28,8 @@ h3 {
 h4 {
     font-size: 16px;
 }
-
-.app-title{
-    margin: 0 auto 0 auto;
-    width: 140px;
+a{
+    text-decoration: none;
 }
 
 .light {
@@ -39,3 +38,4 @@ h4 {
 .bold {
     font-weight: 700;
 }
+
