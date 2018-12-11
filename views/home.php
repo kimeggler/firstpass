@@ -20,5 +20,17 @@ $DBConnection->connect();
 
 ?>
 
-<h1>hello there</h1>
+<div class="container">
+    <h3>Mainpage</h3>
+    <div class="credential-wrapper">
+        <div class="credential"></div>
+        <div class="credential"></div>
+        <div class="credential"></div>
+        <div class="credential"></div>
+        <div class="credential"></div>
+        <div class="credential"></div>
+        <div class="credential"></div>
+        <div class="credential"></div>
+    </div>
+</div>
 

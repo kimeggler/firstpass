@@ -39,5 +39,6 @@ class DefaultController
     private function login() {
         $view = new View('login');
         $view->display();
+
     }
 }
