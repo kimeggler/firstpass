@@ -46,7 +46,7 @@ class LoginRepository extends Repository
         header('Location: /home');
     }
 
-    public function readAll($uid)
+    public function readAllLogins($uid)
     {
         $query = "SELECT id, appname, username, useremail FROM $this->tableName WHERE userid = ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);

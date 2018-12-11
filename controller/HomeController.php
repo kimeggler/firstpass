@@ -9,7 +9,7 @@ class HomeController
     {
         $loginRepository = new LoginRepository();
 
-        $_SESSION['logins'] = $loginRepository->readAll($_SESSION['uid']);
+        $_SESSION['logins'] = $loginRepository->readAllLogins($_SESSION['uid']);
 
 
 
