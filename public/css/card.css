@@ -1,20 +1,14 @@
-.card-box {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.card-title {
+    color: var(--white);
+}
+.card-username {
+    color: var(--white);
 }
 
 .card {
-    width: 45%;
+    width: 25%;
     height: 100px;
     background: radial-gradient(farthest-corner at 0px 0px,var(--light-gray) 0%, var(--dark-gray) 80%);
     display: flex;
     flex-direction: column;
-}
-.card-title {
-    color: var(--black);
-}
-.card-username {
-    color: var(--blue-gray);
 }
