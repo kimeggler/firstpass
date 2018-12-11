@@ -2,7 +2,6 @@
 
 
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-    echo var_dump($_SESSION);
 } else {
     header('Location: /login');
 }

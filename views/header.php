@@ -1,12 +1,12 @@
 <header>
     <h1 class="app-title">FirstPass</h1>
-    <nav>
+    <nav class="header-nav">
         <?php
         if(!isset($_SESSION['loggedIn'])){
-            echo "<a class='nav-link' href='/login'>Login</a><a class='nav-link' href='/register'>Sign In</a>";
+            echo "<a class='nav-link' href='/login'>Login</a><a class='nav-link' href='/register'>Register</a>";
         }
         else if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == false){
-            echo "<a class='nav-link' href='/login'>Login</a><a class='nav-link' href='/register'>Sign In</a>";
+            echo "<a class='nav-link' href='/login'>Login</a><a class='nav-link' href='/register'>Register</a>";
         }
         else {
 

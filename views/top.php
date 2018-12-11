@@ -9,6 +9,7 @@
     <link href="/css/card.css" rel="stylesheet" type="text/css">
     <link href="/css/home.css" rel="stylesheet" type="text/css">
     <link href="/css/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/header.css" rel="stylesheet" type="text/css">
 
 </head>
-<body>
+<body onload="initializeCanvasAnimation()">

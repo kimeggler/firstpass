@@ -5,22 +5,6 @@ require_once '../repository/UserRepository.php';
  */
 class UserController
 {
-    public function index()
-    {
-        $userRepository = new UserRepository();
-        $view = new View('user_index');
-        $view->title = 'Benutzer';
-        $view->heading = 'Benutzer';
-        $view->users = $userRepository->readAll();
-        $view->display();
-    }
-    public function create()
-    {
-        $view = new View('user_create');
-        $view->title = 'Benutzer erstellen';
-        $view->heading = 'Benutzer erstellen';
-        $view->display();
-    }
     public function doCreate()
     {
         if ($_POST['send']) {
