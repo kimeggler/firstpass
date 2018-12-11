@@ -40,8 +40,12 @@ class UserRepository extends Repository
             $_SESSION['username'] = $username;
             $_SESSION['loggedIn'] = true;
             header('Location: /home');
+            if(isset($_SESSION['loginFalse'])) {
+                unset($_SESSION['loginFalse']);
+            }
         } else {
-            echo "wrong credentials";
+            header('Location: /login');
+            $_SESSION['loggedIn'] = false;
         }
     }
 }
