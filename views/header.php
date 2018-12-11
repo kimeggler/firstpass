@@ -1,5 +1,5 @@
 <header>
-    <h1>FirstPass</h1>
+    <h1 class="app-title">FirstPass</h1>
     <nav>
         <?php
         if(!isset($_SESSION['loggedIn'])){

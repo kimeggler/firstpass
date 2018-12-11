@@ -1,7 +1,7 @@
 <?php
 
 
-if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
     echo var_dump($_SESSION);
 } else {
     header('Location: /login');
@@ -20,16 +20,12 @@ $DBConnection->connect();
 ?>
 
 <div class="container">
-    <h3>Mainpage</h3>
-    <div class="credential-wrapper">
-        <div class="credential"></div>
-        <div class="credential"></div>
-        <div class="credential"></div>
-        <div class="credential"></div>
-        <div class="credential"></div>
-        <div class="credential"></div>
-        <div class="credential"></div>
-        <div class="credential"></div>
+    <h1>Mainpage</h1>
+    <div class="card-box">
+        <div class="card">
+            <h2 class="card-title">Application Title</h2>
+            <h3 class="card-username">Username</h3>
+        </div>
     </div>
 </div>
 

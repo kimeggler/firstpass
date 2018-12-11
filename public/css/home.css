@@ -1,20 +1,15 @@
 .container {
     max-width: 1200px;
     max-height: 90vh;
-    overflow-y: scroll;
+
     margin: 0 auto 0 auto;
-    background-color: #1A2778;
+    background-color: #949494;
 }
 
-.credential-wrapper{
+.card-box {
     display: flex;
-    background-color: grey;
-    height: fit-content;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 }
 
-.credential {
-    background-color: var(--black);
-    height: 120px;
-    width: 160px;
-    margin: 4px;
-}
