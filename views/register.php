@@ -27,12 +27,13 @@
 </script>
 <div>
     <div>
-        <form name="register" method="post" onsubmit="return validate()" action="/register/register">
-            <input id="username" type="text" name="username" value="" placeholder="username">
-            <input id="password" type="password" name="password" value="" placeholder="password">
-            <input id="password-repeat" type="password" name="password-repeat" value="" placeholder="repeat password">
-            <input name="cancel" type="reset" value="Cancel">
-            <input type="submit" name="register" value="Register">
+        <h3 class="form-element form-title">Register</h3>
+        <form class="form" name="register" method="post" onsubmit="return validate()" action="/register/register">
+            <input class="form-element input-field" id="username" type="text" name="username" value="" placeholder="username">
+            <input class="form-element input-field" id="password" type="password" name="password" value="" placeholder="password">
+            <input class="form-element input-field" id="password-repeat" type="password" name="password-repeat" value="" placeholder="repeat password">
+            <input class="form-element button" name="cancel" type="reset" value="Cancel">
+            <input class="form-element button" type="submit" name="register" value="Register">
         </form>
         <p id="error-message"></p>
     </div>
