@@ -37,8 +37,10 @@ class UserRepository extends Repository
         $result = $statement->get_result();
 
         if($result->num_rows == 1) {
+            $row = $result->fetch_object();
             $_SESSION['username'] = $username;
             $_SESSION['loggedIn'] = true;
+            $_SESSION['uid'] = $row->id;
             header('Location: /home');
             if(isset($_SESSION['loginFalse'])) {
                 unset($_SESSION['loginFalse']);
