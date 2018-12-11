@@ -1,23 +1,31 @@
-<div class="container">
+<?php 
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+    } else {
+        header('Location: /login');
+    }
+?>
+
+
+<div class="detail">
     <h2>Application Name</h2>
     <div class="card-detail">
-        <p class="label">E-Mail:</p>
-        <div class="card-detail-flex">
-            <h3 class="card-detail-value">myEMail</h3>
-            <button class="card-button">Copy</button>
+        <p class="detail-label">E-Mail:</p>
+        <div class="card-property">
+            <h3 class="detail-value">myEMail</h3>
+            <button class="detail-button">Copy</button>
         </div>
 
-        <p class="label">Username:</p>
-        <div class="card-detail-flex">
-            <h3 class="card-detail-value">myUsername</h3>
-            <button class="card-button">Copy</button>
+        <p class="detail-label">Username:</p>
+        <div class="card-property">
+            <h3 class="detail-value">myUsername</h3>
+            <button class="detail-button">Copy</button>
         </div>
 
-        <p class="label">Password:</p>
-        <div class="card-detail-flex">
-            <h3 class="card-detail-value">myInvisiblePassword</h3>
-            <button class="card-button">Copy</button>
-            <button class="card-button">Show</button>
+        <p class="detail-label">Password:</p>
+        <div class="card-property">
+            <h3 class="detail-value">myInvisiblePassword</h3>
+            <button class="detail-button">Copy</button>
+            <button class="detail-button">Show</button>
         </div>
     </div>
 </div>
