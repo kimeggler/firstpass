@@ -17,7 +17,6 @@ include "./../lib/DBConnection.php";
 
 $DBConnection = new DBConnection();
 $DBConnection->connect();
-
 ?>
 
 <div class="container">
