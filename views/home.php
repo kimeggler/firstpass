@@ -16,15 +16,35 @@ include "./../lib/DBConnection.php";
 
 $DBConnection = new DBConnection();
 $DBConnection->connect();
+
+
 ?>
 
 <div class="container">
     <h1>Mainpage</h1>
     <div class="card-box">
-        <div class="card">
-            <h2 class="card-title">Application Title</h2>
-            <h3 class="card-username">Username</h3>
-        </div>
+        <?php
+        $logins = $_SESSION['logins'];
+            if ($logins->num_rows > 0) {
+                // output data of each row
+                while($row = $logins->fetch_assoc()) {
+                    $account = $row["username"];
+                    if($account == "")
+                    {
+                        $account = $row["email"];
+                    }
+                    echo '<div class=\"card\">
+                            <h2 class=\"card-title\">' . $row["appname"] . '</h2>
+                            <h3 class=\"card-username\">' . $account . '</h3>
+                          </div>';
+                }
+            } else {
+                echo "0 results";
+            }
+
+        ?>
+
+
     </div>
 </div>
 

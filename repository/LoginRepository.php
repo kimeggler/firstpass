@@ -48,7 +48,7 @@ class LoginRepository extends Repository
 
     public function readAll($uid)
     {
-        $query = "SELECT appname, username, useremail, userpassword, userid FROM $this->tableName WHERE userid = ?";
+        $query = "SELECT id, appname, username, useremail FROM $this->tableName WHERE userid = ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('i', $uid);
         if (!$statement->execute()) {
