@@ -1,11 +1,5 @@
 <?php
 
-
-if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-} else {
-    header('Location: /login');
-}
-
 /**
  * Created by PhpStorm.
  * User: begglk
@@ -20,8 +14,7 @@ $DBConnection->connect();
 
 ?>
 
-<div class="container">
-    <h1>Mainpage</h1>
+<div class="home">
     <div class="card-box">
         <?php
         $logins = $_SESSION['logins'];
@@ -33,10 +26,10 @@ $DBConnection->connect();
                     {
                         $account = $row["email"];
                     }
-                    echo '<div class=\"card\">
-                            <h2 class=\"card-title\">' . $row["appname"] . '</h2>
-                            <h3 class=\"card-username\">' . $account . '</h3>
-                          </div>';
+                    echo '<div class="card" onclick="window.location = \'/detail?appid=' . $row["id"] . '\'" >
+                        <h2 class="card-title">' . $row["appname"] . '</h2>
+                        <h3 class="card-username">' . $account . '</h3>
+                    </div>';
                 }
             } else {
                 echo "0 results";

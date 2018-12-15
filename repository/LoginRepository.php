@@ -62,5 +62,21 @@ class LoginRepository extends Repository
         header('Location: /home');
     }
 
+    public function readOneLogin($lid, $uid)
+    {
+        $query = "SELECT id, appname, username, useremail, userpassword FROM $this->tableName WHERE id = ? AND userid = ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ii', $lid, $uid);
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+        return $statement->get_result();
+
+
+
+        header('Location: /home');
+    }
+
 
 }
