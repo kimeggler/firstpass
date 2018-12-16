@@ -46,6 +46,39 @@ class LoginRepository extends Repository
         header('Location: /home');
     }
 
+    public function updateById($id, $appname, $username, $email, $password, $passwordrepeat, $uid)
+    {
+        if($appname == "") {
+            header('Location: /create');
+        }
+
+        if($username == "" && $email == "") {
+            header('Location: /create');
+        }
+
+        if($password == "") {
+            header('Location: /create');
+        }
+
+        if($passwordrepeat == "") {
+            header('Location: /create');
+        }
+
+        if($password != $passwordrepeat) {
+            header('Location: /create');
+        }
+
+        //Todo: Encrypt Passwords here
+
+        $query = "UPDATE $this->tableName SET appname = ?, username = ?, useremail = ?, userpassword = ? WHERE id = ? AND userid = ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ssssii', $appname, $username, $email, $password, $id, $uid);
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+        header('Location: /home');
+    }
+
     public function readAllLogins($uid)
     {
         $query = "SELECT id, appname, username, useremail FROM $this->tableName WHERE userid = ?";
@@ -56,8 +89,6 @@ class LoginRepository extends Repository
         }
 
         return $statement->get_result();
-
-
 
         header('Location: /home');
     }
@@ -73,10 +104,21 @@ class LoginRepository extends Repository
 
         return $statement->get_result();
 
-
-
         header('Location: /home');
     }
 
+    public function deleteLoginById($lid, $uid)
+    {
+        $query = "DELETE FROM $this->tableName WHERE id = ? AND userid = ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ii', $lid, $uid);
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+        return $statement->get_result();
+
+        header('Location: /home');
+    }
 
 }

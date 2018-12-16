@@ -8,14 +8,17 @@
     align-items: center;
     justify-content: center;
 }
+
 .card-detail {
     padding: 50px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-    background-color: rgba(255,255,255,.5);
+    justify-content: space-between;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, .5);
 }
+
 .card-property {
     display: flex;
     flex-direction: row;
@@ -23,22 +26,35 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.detail-title {
+    margin-bottom: 20px;
+}
+
 .detail-button {
     color: var(--black);
-    background-color: rgba(255,255,255,.6);
+    background-color: rgba(255, 255, 255, .6);
     width: 100px;
     height: 30px;
     border: none;
     border-radius: 5px;
 }
+
 .detail-button:hover {
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
     color: var(--white);
 }
+
 .detail-value {
     color: var(--black);
     line-height: 50px;
 }
+
 .detail-label {
     color: var(--black);
+}
+
+.detail-error-button {
+    text-align: center;
+    line-height: 40px;
 }

@@ -32,7 +32,7 @@ $DBConnection->connect();
                     </div>';
                 }
             } else {
-                echo "0 results";
+                echo "no logins saved";
             }
 
         ?>

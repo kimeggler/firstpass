@@ -12,24 +12,37 @@ $DBConnection->connect();
 ?>
 <div class="detail">
     <script>
-        
         function togglePassword() {
             let passwordField = document.getElementById('password');
-            passwordField.innerHTML='<?php
-                if(!isset($_SESSION["passwordshown"])) {
-                    $_SESSION["passwordshown"] = true;
-                    return $_SESSION["password"];
-                }
-                else if(isset($_SESSION["passwordshown"]) && $_SESSION["passwordshown"] == true) {
-                    $_SESSION["passwordshown"] = false;
-                    return str_repeat("*", strlen($_SESSION["password"]));
-                }
-                else if(isset($_SESSION["passwordshown"]) && $_SESSION["passwordshown"] == false) {
-                    $_SESSION["passwordshown"] = false;
-                    return $_SESSION["password"];
-                }
-            ?>';
-            console.log("asdf");
+            passwordshown = !passwordshown;
+            return passwordshown ? passwordField.innerHTML = password : passwordField.innerHTML = '****';
+        }
+
+        function copyStringToClipboard (str) {
+            // Create new element
+            var el = document.createElement('textarea');
+            // Set value (string to be copied)
+            el.value = str;
+            // Set non-editable to avoid focus and move outside of view
+            el.setAttribute('readonly', '');
+            el.style = {position: 'absolute', left: '-9999px'};
+            document.body.appendChild(el);
+            // Select text inside element
+            el.select();
+            // Copy text to clipboard
+            document.execCommand('copy');
+            // Remove temporary element
+            document.body.removeChild(el);
+        }
+
+        function copyToClipboard(target) {
+            if(target === 'password') {
+                return copyStringToClipboard(password)
+            }
+            let copyElement = document.getElementById(target);
+            let copyString = copyElement.textContent || copyElement.innerText;
+
+            copyStringToClipboard(copyString);
         }
     </script>
 <?php
@@ -40,30 +53,33 @@ $DBConnection->connect();
 
             $_SESSION['password'] = $row->userpassword;
 
-            echo '<h2>' . $row->appname . '</h2>
+            echo '<script>let password = "'. $_SESSION['password'] .'"; passwordshown = false; </script>
             <div class="card-detail">
+            <h1 class="detail-title">' . $row->appname . '</h1>
             <p class="detail-label">E-Mail:</p>
             <div class="card-property">
-                <h3 class="detail-value">' . $row->useremail . '</h3>
-                <button class="detail-button">Copy</button>
+                <h3 class="detail-value" id="useremail">' . $row->useremail . '</h3>
+                <button class="detail-button" onclick="copyToClipboard(`useremail`);">Copy</button>
             </div>
     
             <p class="detail-label">Username:</p>
             <div class="card-property">
-                <h3 class="detail-value">' . $row->username . '</h3>
-                <button class="detail-button">Copy</button>
+                <h3 class="detail-value" id="username">' . $row->username . '</h3>
+                <button class="detail-button" onclick="copyToClipboard(`username`);">Copy</button>
             </div>
     
             <p class="detail-label">Password:</p>
             <div class="card-property">
-                <h3 class="detail-value" id="password">' .  str_repeat('*', strlen($_SESSION['password'])) . '</h3>
-                <button class="detail-button" onclick="togglePassword()">Show</button>
-                <button class="detail-button">Copy</button>
+                <h3 class="detail-value" id="password">****</h3>
+                <button class="detail-button" onclick="togglePassword();">Show</button>
+                <button class="detail-button" onclick="copyToClipboard(`password`);">Copy</button>
             </div>
         </div>';
 
         } else {
-            echo "0 results";
+            echo "no detail with id: " . $_GET['appid'] . " found";
+            echo '<a class="detail-error-button form-button" href="/home">Back to Overview</a>';
+            echo "Encryption Key: ". base64_encode(openssl_random_pseudo_bytes(32));
         }
 
     ?>

@@ -23,11 +23,6 @@
             return false
         }
 
-        if(passwordrepeat.value == "") {
-            errormessage.innerHTML="The password must be repeated"
-            return false
-        }
-
         if ( password.value != passwordrepeat.value) {
             errormessage.innerHTML="The passwords must be equal";
             return false
@@ -41,6 +36,7 @@
 
 </script>
 <div class="create form-component">
+    <h3 class="form-element form-title">Create</h3>
     <form class="form" name="create" method="post" onsubmit="return validate()" action="/create/create">
         <input class="form-element input-field" id="appname" type="text" name="appname" value="" placeholder="app name">
         <input class="form-element input-field" id="username" type="text" name="username" value="" placeholder="username">
