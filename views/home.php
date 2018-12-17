@@ -27,8 +27,8 @@ $DBConnection->connect();
                         $account = $row["email"];
                     }
                     echo '<div class="card" onclick="window.location = \'/detail?appid=' . $row["id"] . '\'" >
-                        <h2 class="card-title">' . $row["appname"] . '</h2>
-                        <h3 class="card-username">' . $account . '</h3>
+                        <h2 class="card-title">' . htmlspecialchars($row["appname"]) . '</h2>
+                        <h3 class="card-username">' . htmlspecialchars($account) . '</h3>
                     </div>';
                 }
             } else {

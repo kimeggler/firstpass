@@ -26,7 +26,7 @@
             <a class="home-arrow" href="/home"><img class="header-img" src="/images/back.svg"></a>
             <h3 class="form-element form-title">Delete</h3>
             <form class="form" name="update" method="post" onsubmit="return validate()" action="' . $action  . '" >
-            <h1 class="detail-title" id="apptitle">' . $row->appname . '</h1>
+            <h1 class="detail-title" id="apptitle">' . htmlspecialchars($row->appname) . '</h1>
             <p class="detail-label">Enter name of app to delete it!</p>
                 <input class="form-element input-field" id="appname" type="text" name="appname" value="" placeholder="app name">
                 <div class="form-buttons">

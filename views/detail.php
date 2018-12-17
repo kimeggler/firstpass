@@ -62,7 +62,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
             <div class="card-detail">
             <a class="home-arrow" href="/home"><img class="header-img" src="/images/back.svg"></a>
             <div class="detail-header">
-                <h1 class="detail-title">' . $row->appname . '</h1> 
+                <h1 class="detail-title">' . htmlspecialchars($row->appname) . '</h1> 
                 <div class="detail-icons">
                     <a href="/update?appid=' . $_GET['appid'] . '"><img class="detail-icon" src="/images/update.svg"></a>
                     <a href="/delete?appid=' . $_GET['appid'] . '"><img class="detail-icon" src="/images/delete.svg"></a>
@@ -70,13 +70,13 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
             </div>
             <p class="detail-label">E-Mail:</p>
             <div class="card-property">
-                <h3 class="detail-value" id="useremail">' . $row->useremail . '</h3>
+                <h3 class="detail-value" id="useremail">' . htmlspecialchars($row->useremail) . '</h3>
                 <button class="detail-button" onclick="copyToClipboard(`useremail`);">Copy</button>
             </div>
     
             <p class="detail-label">Username:</p>
             <div class="card-property">
-                <h3 class="detail-value" id="username">' . $row->username . '</h3>
+                <h3 class="detail-value" id="username">' . htmlspecialchars($row->username) . '</h3>
                 <button class="detail-button" onclick="copyToClipboard(`username`);">Copy</button>
             </div>
     
