@@ -12,7 +12,7 @@ create table logins (
 	id int auto_increment unique,
     appname varchar(50),
     username varchar(50),
-    useremail varchar(100),
+    useremail varchar(50),
     userpassword varchar(255),
     userid int,
     primary key(id),

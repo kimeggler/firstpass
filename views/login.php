@@ -4,7 +4,7 @@
     <canvas id="gradient" height="35" width="35"></canvas>
         <h3 class="form-element form-title">Login</h3>
         <form class="form" name="login" method="post" action="/login/signIn">
-            <input class="form-element input-field" type="text" name="username" value="" placeholder="username">
+            <input class="form-element input-field" type="text" name="username" maxlength="50" value="" placeholder="username">
             <input class="form-element input-field" type="password" name="password" value="" placeholder="password">
             <div class="form-buttons">
                 <input class="form-element form-button" type="reset" value="Reset">

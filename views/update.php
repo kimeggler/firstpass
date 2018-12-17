@@ -44,10 +44,10 @@
             <a class="home-arrow" href="/home"><img class="header-img" src="/images/back.svg"></a>
             <h3 class="form-element form-title">Update</h3>
             <form class="form" name="update" method="post" onsubmit="return validate()" action="' . $action  . '" >
-                <input class="form-element input-field" id="appname" type="text" name="appname" value="' . htmlspecialchars($row->appname) . '" placeholder="app name">
-                <input class="form-element input-field" id="username" type="text" name="username" value="' . htmlspecialchars($row->username) . '" placeholder="username">
-                <input class="form-element input-field" id="email" type="email" name="email" value="' . htmlspecialchars($row->useremail) . '" placeholder="email">
-                <input class="form-element input-field" id="password" type="password" name="password" value="' . htmlspecialchars($row->userpassword) . '" placeholder="password">
+                <input class="form-element input-field" id="appname" type="text" name="appname" maxlength="50" value="' . htmlspecialchars($row->appname) . '" placeholder="app name">
+                <input class="form-element input-field" id="username" type="text" name="username" maxlength="50" value="' . htmlspecialchars($row->username) . '" placeholder="username">
+                <input class="form-element input-field" id="email" type="email" name="email" maxlength="50" value="' . htmlspecialchars($row->useremail) . '" placeholder="email">
+                <input class="form-element input-field" id="password" type="password" name="password" maxlength="255" value="' . htmlspecialchars($row->userpassword) . '" placeholder="password">
                 <input class="form-element input-field" id="password-repeat" type="password" name="password-repeat" value="" placeholder="repeat password">
                 <div class="form-buttons">
                     <input class="form-element form-button" name="cancel" type="reset" value="Cancel">
