@@ -4,8 +4,10 @@
     echo '<div class="logout form-component">
     <a class="home-arrow" href="/home"><img class="header-img" alt="go back" src="/images/back.svg"></a>
     <div class="form logout-field">
-        <h1 class="detail-title" id="apptitle">Log out</h1>
-        <a href="/logout/logout"><button class="form-button">Logout</button></a>
+        <h1 class="detail-title" id="logout">Log out</h1>
+        <div class="form-buttons">
+        <a href="/logout/logout" class="form-button">Logout</a>
+        </div>
     </div>
         <form class="form logout-field" name="delete" method="post" action="' . $action  . '">
             <h1 class="detail-title" id="apptitle">Delete Account</h1>
