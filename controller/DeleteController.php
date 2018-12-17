@@ -5,6 +5,15 @@ require_once '../repository/LoginRepository.php';
  */
 class UpdateController
 {
+    public function index()
+    {
+        $loginRepository = new LoginRepository();
+        
+        $_SESSION['activedetail'] = $loginRepository->readOneLogin($_GET['appid'], $_SESSION['uid']);
+
+        $view = new View('delete');
+        $view->display();
+    }
     public function delete()
     {
         $loginRepository = new LoginRepository();
