@@ -74,7 +74,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
 
             echo '<script>let password = "'. decrypt($_SESSION['password']) .'"; passwordshown = false; </script>
             <div class="card-detail">
-            <a class="home-arrow" href="/home"><img class="header-img" src="/images/back.svg"></a>
+            <a class="home-arrow" href="/home"><img class="header-img" alt="go back" src="/images/back.svg"></a>
             <div class="detail-header">
                 <h1 class="detail-title">' . htmlspecialchars($row->appname) . '</h1> 
                 <div class="detail-icons">

@@ -25,7 +25,7 @@
         $row = $app->fetch_object();
         $action = '/delete/delete?appid=' . $_GET['appid'];
         echo '<div class="delete form-component">
-            <a class="home-arrow" href="/home"><img class="header-img" src="/images/back.svg"></a>
+            <a class="home-arrow" href="/home"><img class="header-img" alt="go back" src="/images/back.svg"></a>
             <h3 class="form-element form-title">Delete</h3>
             <form class="form" name="update" method="post" onsubmit="return validate()" action="' . $action  . '" >
             <h1 class="detail-title" id="apptitle">' . htmlspecialchars($row->appname) . '</h1>
