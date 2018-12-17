@@ -20,6 +20,9 @@ class UserRepository extends Repository
         if($password != $passwordrepeat) {
             header('Location: /register');
         }
+        if($this->exists($username)) {
+            header('Location: /register');
+        }
         //hashed password before it is saved in db
         $password = password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO $this->tableName (username, userpassword) VALUES (?, ?)";
@@ -83,7 +86,7 @@ class UserRepository extends Repository
         //deletes user
         $uid = $_SESSION['uid'];
         //checks if password matches before deletion
-        if(login($username)) {
+        if($this->exists($username)) {
             //execute delete query
             $query = "DELETE FROM $this->tableName WHERE id = ? AND username = ?";
             $statement = ConnectionHandler::getConnection()->prepare($query);
@@ -91,6 +94,26 @@ class UserRepository extends Repository
             if (!$statement->execute()) {
                 throw new Exception($statement->error);
             }
+        }
+        header('Location: /logout');
+    }
+    function exists($username)
+    {
+        //loggs in user
+        $query = "SELECT id, username, userpassword FROM $this->tableName WHERE username = ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('s', $username);
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+        $result = $statement->get_result();
+
+        //check if user exists
+        if($result->num_rows == 1) {
+            return false;
+        } else {
+            return true;
         }
     }
 }
