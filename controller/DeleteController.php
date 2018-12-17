@@ -3,7 +3,7 @@ require_once '../repository/LoginRepository.php';
 /**
  * Siehe Dokumentation im DefaultController.
  */
-class UpdateController
+class DeleteController
 {
     public function index()
     {
@@ -16,7 +16,11 @@ class UpdateController
     }
     public function delete()
     {
+        $id = $_GET['appid'];
+        $uid = $_SESSION['uid'];
         $loginRepository = new LoginRepository();
         $loginRepository->deleteById($id, $uid);
+        
+        header('Location: /home');
     }
 }

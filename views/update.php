@@ -41,6 +41,7 @@
         $row = $app->fetch_object();
         $action = '/update/update?appid=' . $_GET['appid'];
         echo '<div class="update form-component">
+            <a class="home-arrow" href="/home"><img class="header-img" src="/images/back.svg"></a>
             <h3 class="form-element form-title">Update</h3>
             <form class="form" name="update" method="post" onsubmit="return validate()" action="' . $action  . '" >
                 <input class="form-element input-field" id="appname" type="text" name="appname" value="' . $row->appname . '" placeholder="app name">

@@ -46,4 +46,8 @@ a{
 .bold {
     font-weight: 700;
 }
-
+.home-arrow {
+    position: fixed;
+    left: 30px;
+    top: 80px;
+}

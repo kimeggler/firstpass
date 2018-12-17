@@ -103,8 +103,6 @@ class LoginRepository extends Repository
         }
 
         return $statement->get_result();
-
-        header('Location: /home');
     }
 
     public function deleteLoginById($lid, $uid)
@@ -115,10 +113,6 @@ class LoginRepository extends Repository
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
-
-        return $statement->get_result();
-
-        header('Location: /home');
     }
 
 }

@@ -1,5 +1,5 @@
 <?php
-
+require_once '../repository/UserRepository.php';
 /**
  * Der Controller ist der Ort an dem es für jede Seite, welche der Benutzer
  * anfordern kann eine Methode gibt, welche die dazugehörende Businesslogik
@@ -33,7 +33,23 @@ class LogoutController
      */
     public function index()
     {
+        $view = new View('logout');
+        $view->display();
+    }
+    public function logout() {
         session_destroy();
         header('Location: /login');
+    }
+    public function delete() {
+        $uid = $_SESSION['uid'];
+
+        if($_POST['delete']) {
+            $userRepository = new UserRepository();
+            $userRepository->deleteById($id, $password);
+            session_destroy();
+            header('Location: /login');
+        }
+        
+        header('Location: /logout');
     }
 }

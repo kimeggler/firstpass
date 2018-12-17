@@ -36,6 +36,7 @@
 
 </script>
 <div class="create form-component">
+    <a class="home-arrow" href="/home"><img class="header-img" src="/images/back.svg"></a>
     <h3 class="form-element form-title">Create</h3>
     <form class="form" name="create" method="post" onsubmit="return validate()" action="/create/create">
         <input class="form-element input-field" id="appname" type="text" name="appname" value="" placeholder="app name">

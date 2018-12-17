@@ -9,6 +9,11 @@ include "./../lib/DBConnection.php";
 
 $DBConnection = new DBConnection();
 $DBConnection->connect();
+
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
+    header('Location: /login');
+}
+
 ?>
 <div class="detail">
     <script>
@@ -55,7 +60,14 @@ $DBConnection->connect();
 
             echo '<script>let password = "'. $_SESSION['password'] .'"; passwordshown = false; </script>
             <div class="card-detail">
-            <h1 class="detail-title">' . $row->appname . '</h1>
+            <a class="home-arrow" href="/home"><img class="header-img" src="/images/back.svg"></a>
+            <div class="detail-header">
+                <h1 class="detail-title">' . $row->appname . '</h1> 
+                <div class="detail-icons">
+                    <a href="/update?appid=' . $_GET['appid'] . '"><img class="detail-icon" src="/images/update.svg"></a>
+                    <a href="/delete?appid=' . $_GET['appid'] . '"><img class="detail-icon" src="/images/delete.svg"></a>
+                </div>
+            </div>
             <p class="detail-label">E-Mail:</p>
             <div class="card-property">
                 <h3 class="detail-value" id="useremail">' . $row->useremail . '</h3>

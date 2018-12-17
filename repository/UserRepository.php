@@ -53,14 +53,29 @@ class UserRepository extends Repository
                 if(isset($_SESSION['loginFalse'])) {
                     unset($_SESSION['loginFalse']);
                 }
+                return true;
             }
             else {
                 header('Location: /login');
                 $_SESSION['loggedIn'] = false;
+                return false;
             }
         } else {
             header('Location: /login');
             $_SESSION['loggedIn'] = false;
+            return false;
+        }
+    }
+    public function delete($username, $password)
+    {
+        $uid = $_SESSION['uid'];
+        if(login($username)) {
+            $query = "DELETE FROM $this->tableName WHERE id = ? AND username = ?";
+            $statement = ConnectionHandler::getConnection()->prepare($query);
+            $statement->bind_param('is', $uid, $username);
+            if (!$statement->execute()) {
+                throw new Exception($statement->error);
+            }
         }
     }
 }

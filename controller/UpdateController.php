@@ -16,6 +16,10 @@ class UpdateController
     }
     public function update()
     {
+                    
+        $config = require '../config.php';
+        $key = $config['key'];
+        
         if ($_POST['update']) {
             $uid = $_SESSION['uid'];
             $id = $_GET['appid'];
