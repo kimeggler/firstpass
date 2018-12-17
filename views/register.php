@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script>
     function validate()
     {
         let errormessage = document.getElementById("error-message");
@@ -11,19 +11,15 @@
             console.log(1);
             return false
         }
-
         if ( password.value != passwordrepeat.value) {
             errormessage.innerHTML="The passwords must be equal";
             console.log(2);
             return false
         }
-
         else {
             return true;
         }
     }
-
-
 </script>
 <div class="register form-component">
     <h3 class="form-element form-title">Register</h3>

@@ -42,8 +42,11 @@ a{
 input {
     color: white;
     font-weight: 500;
+    cursor: pointer;
 }
-
+button {
+    cursor: pointer;
+}
 .light {
     font-weight: 200;
 }

@@ -1,5 +1,3 @@
-
-
 <div class="login form-component">
     <h3 class="form-element form-title">Login</h3>
     <form class="form" name="login" method="post" action="/login/signIn">

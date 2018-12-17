@@ -9,7 +9,7 @@
             echo "<a class='nav-link' href='/login'>Login</a><a class='nav-link' href='/register'>Register</a>";
         }
         else {
-            echo "<a class='nav-link' href='/logout'><img class='header-img' src='/images/user.svg'></a><a class='nav-link' href='/create'><img class='header-img' src='/images/plus-symbol.svg'></a>";
+            echo "<a class='nav-link' href='/logout'><img class='header-img' alt='logout' src='/images/user.svg'></a><a class='nav-link' href='/create'><img class='header-img' alt='create new element' src='/images/plus-symbol.svg'></a>";
         }
         ?>
     </nav>
