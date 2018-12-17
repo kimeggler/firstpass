@@ -78,8 +78,8 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
             <div class="detail-header">
                 <h1 class="detail-title">' . htmlspecialchars($row->appname) . '</h1> 
                 <div class="detail-icons">
-                    <a href="/update?appid=' . $_GET['appid'] . '"><img class="detail-icon" src="/images/update.svg"></a>
-                    <a href="/delete?appid=' . $_GET['appid'] . '"><img class="detail-icon" src="/images/delete.svg"></a>
+                    <a href="/update?appid=' . $_GET['appid'] . '"><img class="detail-icon" alt="update" src="/images/update.svg"></a>
+                    <a href="/delete?appid=' . $_GET['appid'] . '"><img class="detail-icon" alt="delete" src="/images/delete.svg"></a>
                 </div>
             </div>
             <p class="detail-label">E-Mail:</p>

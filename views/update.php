@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script>
     function validate()
     {
         //validates all inputs and desplays errormessages

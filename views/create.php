@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script>
     function validate()
     {
         let errormessage = document.getElementById("error-message");

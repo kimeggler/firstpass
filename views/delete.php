@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script>
     function validate()
     {
         // warning is displayed when the app-names don't match
