@@ -11,7 +11,7 @@ class DBConnection
     public function connect(){
         $servername = "localhost:3306";
         $username = "root";
-        $password = "1234";
+        $password = "";
         $dbName = "firstpass";
 
         // Create connection
