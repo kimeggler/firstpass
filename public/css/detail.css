@@ -53,6 +53,7 @@
 
 .detail-label {
     color: var(--black);
+    margin-bottom: 10px;
 }
 
 .detail-error-button {
@@ -75,7 +76,4 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-.detail-label {
-    margin-bottom: 10px;
 }

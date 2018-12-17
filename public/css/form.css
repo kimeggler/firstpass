@@ -73,6 +73,6 @@
     position: fixed;
     z-index: -1;
     transform: scale(1.1);
-    filter: brightness(80%) blur(30px);
+    filter: brightness(70%) blur(30px);
     overflow: hidden;
 }

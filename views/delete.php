@@ -32,8 +32,8 @@
             <p class="detail-label">Enter name of app to delete it!</p>
                 <input class="form-element input-field" id="appname" type="text" name="appname" value="" placeholder="app name">
                 <div class="form-buttons">
-                    <input class="form-element form-button" name="cancel" type="reset" value="Cancel">
-                    <input class="form-element form-button" type="submit" name="update" value="Save">
+                    <a href="/detail?appid=' . $_GET['appid'] . '" class="form-button">Cancel</a>
+                    <input class="form-element form-button" type="submit" name="update" value="Delete">
                 </div>
             </form>
             <p id="error-message"></p>

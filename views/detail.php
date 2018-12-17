@@ -53,6 +53,18 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
         }
     </script>
 <?php
+    //entschlüsseln des passworts
+    function decrypt($passwordEncrypted) {
+        $config = require '../config.php';
+        $key = $config['key'];
+        $tag = $config['tag'];
+        $iv = $config['iv'];
+        $cipher = "aes-256-cbc";
+        if (in_array($cipher, openssl_get_cipher_methods()))
+        {
+            return openssl_decrypt($passwordEncrypted, $cipher, $key, $options=0, $iv);
+        }
+    }
     $logins = $_SESSION['activedetail'];
         if ($logins->num_rows == 1) {
             // output data of each row
@@ -60,7 +72,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
 
             $_SESSION['password'] = $row->userpassword;
 
-            echo '<script>let password = "'. $_SESSION['password'] .'"; passwordshown = false; </script>
+            echo '<script>let password = "'. decrypt($_SESSION['password']) .'"; passwordshown = false; </script>
             <div class="card-detail">
             <a class="home-arrow" href="/home"><img class="header-img" src="/images/back.svg"></a>
             <div class="detail-header">
@@ -92,8 +104,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
 
         } else {
             // warning is displayed when app doesn't exist
-            echo "no detail with id: " . $_GET['appid'] . " found";
-            echo '<a class="detail-error-button form-button" href="/home">Back to Overview</a>';
+            header('Location: /home');
         }
 
     ?>

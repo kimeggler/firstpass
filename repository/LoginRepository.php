@@ -13,15 +13,15 @@ class LoginRepository extends Repository
      */
     protected $tableName = 'logins';
 
-    public function encrypt($password) {
+    function encrypt($password) {
         $config = require '../config.php';
         $key = $config['key'];
         $tag = $config['tag'];
         $iv = $config['iv'];
-        $cipher = "aes-128-gcm";
+        $cipher = "aes-256-cbc";
         if (in_array($cipher, openssl_get_cipher_methods()))
         {
-            return openssl_encrypt($password, $cipher, $key, $options=0, $iv, $tag);
+            return openssl_encrypt($password, $cipher, $key, $options=0, $iv);
         }
     }
 
@@ -30,10 +30,10 @@ class LoginRepository extends Repository
         $key = $config['key'];
         $tag = $config['tag'];
         $iv = $config['iv'];
-        $cipher = "aes-128-gcm";
+        $cipher = "aes-256-cbc";
         if (in_array($cipher, openssl_get_cipher_methods()))
         {
-            return openssl_decrypt($passwordEncrypted, $cipher, $key, $options=0, $iv, $tag);
+            return openssl_decrypt($passwordEncrypted, $cipher, $key, $options=0, $iv);
         }
     }
 
@@ -65,7 +65,7 @@ class LoginRepository extends Repository
 
         $query = "INSERT INTO $this->tableName (appname, username, useremail, userpassword, userid) VALUES (?, ?, ?, ?, ?)";
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ssssi', $appname, $username, $email, $password, $uid);
+        $statement->bind_param('ssssi', $appname, $username, $email, $this->encrypt($password), $uid);
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
@@ -102,7 +102,7 @@ class LoginRepository extends Repository
 
         $query = "UPDATE $this->tableName SET appname = ?, username = ?, useremail = ?, userpassword = ? WHERE id = ? AND userid = ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ssssii', $appname, $username, $email, $password, $id, $uid);
+        $statement->bind_param('ssssii', $appname, $username, $email, $this->encrypt($password), $id, $uid);
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }

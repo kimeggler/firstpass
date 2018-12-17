@@ -18,8 +18,3 @@ create table logins (
     primary key(id),
     foreign key(userid) references users(id)
 );
-
-show tables;
-
-explain logins;
-explain users;

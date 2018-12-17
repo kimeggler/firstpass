@@ -37,6 +37,19 @@
 
 </script>
 <?php
+    //entschlüsseln des passworts
+    function decrypt($passwordEncrypted) {
+        $config = require '../config.php';
+        $key = $config['key'];
+        $tag = $config['tag'];
+        $iv = $config['iv'];
+        $cipher = "aes-256-cbc";
+        if (in_array($cipher, openssl_get_cipher_methods()))
+        {
+            return openssl_decrypt($passwordEncrypted, $cipher, $key, $options=0, $iv);
+        }
+    }
+
     $app = $_SESSION['activedetail'];
     if($app->num_rows == 1) {
         $row = $app->fetch_object();
@@ -47,7 +60,7 @@
                 <input class="form-element input-field" id="appname" type="text" name="appname" maxlength="50" value="' . htmlspecialchars($row->appname) . '" placeholder="app name">
                 <input class="form-element input-field" id="username" type="text" name="username" maxlength="50" value="' . htmlspecialchars($row->username) . '" placeholder="username">
                 <input class="form-element input-field" id="email" type="email" name="email" maxlength="50" value="' . htmlspecialchars($row->useremail) . '" placeholder="email">
-                <input class="form-element input-field" id="password" type="password" name="password" maxlength="255" value="' . htmlspecialchars($row->userpassword) . '" placeholder="password">
+                <input class="form-element input-field" id="password" type="password" name="password" maxlength="255" value="' . htmlspecialchars(decrypt($row->userpassword)) . '" placeholder="password">
                 <input class="form-element input-field" id="password-repeat" type="password" name="password-repeat" value="" placeholder="repeat password">
                 <div class="form-buttons">
                     <a href="/detail?appid=' . $_GET['appid'] . '" class="form-button">Cancel</a>
