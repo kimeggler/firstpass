@@ -39,6 +39,10 @@ h4 {
 a{
     text-decoration: none;
 }
+input {
+    color: black;
+    font-weight: 500;
+}
 
 .light {
     font-weight: 200;

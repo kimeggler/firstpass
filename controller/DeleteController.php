@@ -16,11 +16,13 @@ class DeleteController
     }
     public function delete()
     {
+        // delete login by id
+
         $id = $_GET['appid'];
         $uid = $_SESSION['uid'];
         $loginRepository = new LoginRepository();
         $loginRepository->deleteById($id, $uid);
-        
+        //redirect to home
         header('Location: /home');
     }
 }

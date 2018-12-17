@@ -41,9 +41,11 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
         }
 
         function copyToClipboard(target) {
+            // determines which element should be copied
             if(target === 'password') {
                 return copyStringToClipboard(password)
             }
+            //gets text from element
             let copyElement = document.getElementById(target);
             let copyString = copyElement.textContent || copyElement.innerText;
 
@@ -89,9 +91,9 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
         </div>';
 
         } else {
+            // warning is displayed when app doesn't exist
             echo "no detail with id: " . $_GET['appid'] . " found";
             echo '<a class="detail-error-button form-button" href="/home">Back to Overview</a>';
-            echo "Encryption Key: ". base64_encode(openssl_random_pseudo_bytes(32));
         }
 
     ?>

@@ -1,14 +1,15 @@
 .card-title {
     color: var(--white);
+    font-weight: 700;
 }
 .card-username {
     color: var(--white);
+    font-weight: 500;
 }
 
 .card {
     width: 25%;
     height: 100px;
-    background: radial-gradient(farthest-corner at 0px 0px,var(--light-gray) 0%, var(--dark-gray) 80%);
     display: flex;
     flex-direction: column;
 }

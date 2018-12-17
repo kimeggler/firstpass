@@ -1,6 +1,7 @@
 <script type="text/javascript">
     function validate()
     {
+        // warning is displayed when the app-names don't match
         let errormessage = document.getElementById("error-message");
         let apptitle = document.getElementById('apptitle');
         let appname = document.getElementById( "appname" );
@@ -19,6 +20,7 @@
 </script>
 <?php
     $app = $_SESSION['activedetail'];
+    // to prohibit accidential deletion of logins the appname must be entered
     if($app->num_rows == 1) {
         $row = $app->fetch_object();
         $action = '/delete/delete?appid=' . $_GET['appid'];
